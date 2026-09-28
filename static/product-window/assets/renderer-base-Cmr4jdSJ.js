@@ -1,0 +1,1 @@
+var e=``;function t(){let e=document.baseURI,t=new URL(`./`,e).href;for(let e of[`react/`,`sidebar/`,`tasks/`,`settings/`,`call/`,`sticker-manager/`])if(t.endsWith(`/`+e)){t=t.replace(/[^/]+\/$/,``);break}return t}function n(){return e||=t(),e}function r(e){let t=e.replace(/^\/+/,``);return n()+t}export{r as t};
