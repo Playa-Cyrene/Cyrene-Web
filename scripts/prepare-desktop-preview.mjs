@@ -88,6 +88,9 @@ writeFileSync(
 const htmlPath = join(targetRoot, 'react', 'index.html');
 let html = readFileSync(htmlPath, 'utf8');
 html = html.replace(/<title>[^<]*<\/title>/, '<title>Cyrene · 交互预览</title>');
+// Docusaurus clean URLs redirect index.html to a slashless path. Pin the base so
+// the renderer's ../assets and demo bridge scripts still resolve under /product-window/.
+html = html.replace('<head>', '<head>\n  <base href="/product-window/react/">');
 html = html.replace(
   /<meta http-equiv="Content-Security-Policy"[^>]*>/,
   '<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\'; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data: blob:; font-src \'self\' data:; connect-src \'self\'; media-src \'self\' data: blob:; worker-src \'self\' blob:; object-src \'none\'; base-uri \'self\'">',

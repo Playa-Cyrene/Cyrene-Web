@@ -52,7 +52,7 @@
       popQuizRequestListeners.forEach((callback) => callback(structuredClone(demoLearnQuiz)));
     });
   };
-  localStorage.setItem('cyrene-react-last-mode', 'chat');
+  localStorage.setItem('cyrene-react-last-mode', 'code');
   window.user = {
     getProfile: async () => ({nickname: 'Playa', callPreference: 'Playa'}),
     onProfileChanged: (callback) => { userProfileListeners.add(callback); return () => userProfileListeners.delete(callback); },
@@ -108,7 +108,7 @@
     listCharacters: async () => ['cyrene', '风堇', '赛飞儿', '海瑟音', '白厄'],
     onChanged: (callback) => { momentChangeListeners.add(callback); return () => momentChangeListeners.delete(callback); },
   };
-  let observedDemoMode = 'chat';
+  let observedDemoMode = 'code';
   window.setInterval(() => {
     const currentMode = localStorage.getItem('cyrene-react-last-mode');
     if (currentMode === observedDemoMode) return;

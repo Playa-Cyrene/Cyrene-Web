@@ -1,0 +1,115 @@
+.cyrene-providers {
+  position: relative;
+  z-index: 1;
+  padding: 8px 24px 2px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.cyrene-providers__inner {
+  width: min(1160px, 100%);
+  margin-inline: auto;
+}
+
+.cyrene-providers__eyebrow {
+  margin: 0 0 12px;
+  color: var(--cyrene-muted);
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+.cyrene-providers__eyebrow span {
+  padding-inline: 5px;
+  color: var(--cyrene-accent);
+}
+
+.cyrene-providers__accessible-list {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cyrene-providers__viewport {
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+.cyrene-providers__marquee {
+  min-height: 48px;
+}
+
+.cyrene-providers__marquee .rfm-child {
+  display: inline-flex;
+  align-items: center;
+}
+
+.cyrene-provider {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  margin-inline: 22px;
+  color: var(--cyrene-copy);
+  font-size: 13px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.cyrene-provider__logo-tile,
+.cyrene-provider__letter {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--cyrene-border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cyrene-provider__logo-tile img {
+  display: block;
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+}
+
+.cyrene-provider__letter {
+  color: #e4462e;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+html[data-theme='dark'] .cyrene-provider__logo-tile,
+html[data-theme='dark'] .cyrene-provider__letter {
+  border-color: #fff;
+}
+
+@media (max-width: 640px) {
+  .cyrene-providers {
+    padding: 4px 14px 0;
+  }
+
+  .cyrene-providers__eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .cyrene-provider {
+    gap: 7px;
+    margin-inline: 15px;
+    font-size: 12px;
+  }
+
+  .cyrene-providers__viewport {
+    mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  }
+}

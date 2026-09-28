@@ -1,0 +1,142 @@
+.cyrene-download-page {
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: clamp(80px, 12vw, 150px) 24px 120px;
+  color: var(--cyrene-fg);
+  background:
+    radial-gradient(ellipse at 50% 15%, var(--cyrene-hero-glow-pink), transparent 38%),
+    var(--cyrene-page-bg);
+}
+
+.cyrene-download-hero {
+  max-width: 760px;
+  margin: 0 auto clamp(42px, 7vw, 76px);
+  text-align: center;
+}
+
+.cyrene-download-version {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid color-mix(in srgb, var(--cyrene-accent), transparent 72%);
+  border-radius: 999px;
+  color: var(--cyrene-accent);
+  background: color-mix(in srgb, var(--cyrene-accent), transparent 94%);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cyrene-download-hero h1 {
+  margin: 20px 0 12px;
+  color: var(--cyrene-fg);
+  font-size: clamp(40px, 7vw, 64px);
+  font-weight: 580;
+  letter-spacing: -.055em;
+  line-height: 1.1;
+}
+
+.cyrene-download-hero p {
+  margin: 0;
+  color: var(--cyrene-copy);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.cyrene-download-options {
+  display: grid;
+  width: min(960px, 100%);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-inline: auto;
+}
+
+.cyrene-download-card {
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 4vw, 34px);
+  border: 1px solid var(--cyrene-border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--cyrene-page-bg), var(--cyrene-fg) 2%);
+  box-shadow: 0 24px 70px rgba(16, 16, 22, .06);
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.cyrene-download-card:hover {
+  border-color: color-mix(in srgb, var(--cyrene-accent), var(--cyrene-border) 38%);
+  box-shadow: 0 30px 76px rgba(16, 16, 22, .1);
+  transform: translateY(-3px);
+}
+
+.cyrene-download-card__topline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cyrene-download-card__icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--cyrene-border);
+  border-radius: 10px;
+  color: var(--cyrene-accent);
+  background: color-mix(in srgb, var(--cyrene-accent), transparent 94%);
+}
+
+.cyrene-download-card__eyebrow {
+  color: var(--cyrene-muted);
+  font-size: 12px;
+}
+
+.cyrene-download-card h2 {
+  margin: 24px 0 9px;
+  color: var(--cyrene-fg);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -.03em;
+}
+
+.cyrene-download-card p {
+  max-width: 360px;
+  margin: 0 0 25px;
+  color: var(--cyrene-copy);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.cyrene-download-card__action {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 9px;
+  margin-top: auto;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: #fff !important;
+  background: var(--cyrene-accent);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background .16s ease, transform .16s ease;
+}
+
+.cyrene-download-card__action:hover {
+  color: #fff !important;
+  background: #ed4778;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .cyrene-download-page { padding: 76px 18px 90px; }
+  .cyrene-download-options { grid-template-columns: 1fr; gap: 14px; }
+  .cyrene-download-card { min-height: 250px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyrene-download-card,
+  .cyrene-download-card__action { transition: none; }
+}

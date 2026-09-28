@@ -1,0 +1,183 @@
+.cyrene-feature-showcase {
+  padding: clamp(70px, 9vw, 124px) 24px clamp(84px, 10vw, 140px);
+  color: var(--cyrene-fg);
+  background: var(--cyrene-page-bg);
+}
+
+.cyrene-feature-showcase__heading {
+  max-width: 720px;
+  margin: 0 auto clamp(38px, 6vw, 74px);
+  text-align: center;
+}
+
+.cyrene-feature-showcase__eyebrow {
+  color: var(--cyrene-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.cyrene-feature-showcase__heading h2 {
+  margin: 14px 0 10px;
+  color: var(--cyrene-fg);
+  font-size: clamp(30px, 4.2vw, 48px);
+  font-weight: 550;
+  letter-spacing: -.045em;
+  line-height: 1.16;
+}
+
+.cyrene-feature-showcase__heading p {
+  margin: 0;
+  color: var(--cyrene-copy);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.cyrene-feature-showcase__list {
+  width: min(1160px, 100%);
+  margin-inline: auto;
+}
+
+.cyrene-feature-showcase__row {
+  display: grid;
+  grid-template-columns: minmax(260px, .78fr) minmax(0, 1.22fr);
+  align-items: center;
+  gap: clamp(36px, 7vw, 104px);
+  padding-block: clamp(42px, 6.4vw, 78px);
+  border-top: 1px solid var(--cyrene-border);
+}
+
+.cyrene-feature-showcase__row:last-child {
+  border-bottom: 1px solid var(--cyrene-border);
+}
+
+.cyrene-feature-showcase__row.is-reversed .cyrene-feature-showcase__copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.cyrene-feature-showcase__row.is-reversed .cyrene-feature-showcase__placeholder {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.cyrene-feature-showcase__number {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--cyrene-accent);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .08em;
+}
+
+.cyrene-feature-showcase__copy h3 {
+  margin: 0 0 14px;
+  color: var(--cyrene-fg);
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 560;
+  letter-spacing: -.035em;
+  line-height: 1.25;
+}
+
+.cyrene-feature-showcase__copy p {
+  max-width: 390px;
+  margin: 0;
+  color: var(--cyrene-copy);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.cyrene-feature-showcase__visual {
+  position: relative;
+  display: block;
+  aspect-ratio: 81 / 53;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--cyrene-border);
+  border-radius: 4px;
+  background: var(--cyrene-page-bg);
+  box-shadow: 0 20px 58px rgba(23, 24, 30, .1);
+  animation: cyrene-feature-float 7s ease-in-out infinite alternate;
+  transition: box-shadow .4s ease;
+}
+
+.cyrene-feature-showcase__row:nth-child(even) .cyrene-feature-showcase__visual {
+  animation-delay: -3.5s;
+}
+
+.cyrene-feature-showcase__visual:hover {
+  box-shadow: 0 26px 68px rgba(255, 91, 138, .2);
+}
+
+.cyrene-feature-showcase__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.cyrene-feature-showcase__visual:hover .cyrene-feature-showcase__image {
+  transform: scale(1.025);
+}
+
+@keyframes cyrene-feature-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-7px); }
+}
+
+.cyrene-feature-showcase__image.is-dark {
+  display: none;
+}
+
+html[data-theme='dark'] .cyrene-feature-showcase__image.is-dark {
+  display: block;
+}
+
+html[data-theme='dark'] .cyrene-feature-showcase__image.is-light {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .cyrene-feature-showcase {
+    padding-inline: 18px;
+  }
+
+  .cyrene-feature-showcase__row,
+  .cyrene-feature-showcase__row.is-reversed {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-block: 38px;
+  }
+
+  .cyrene-feature-showcase__row.is-reversed .cyrene-feature-showcase__copy,
+  .cyrene-feature-showcase__row.is-reversed .cyrene-feature-showcase__placeholder {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .cyrene-feature-showcase__copy p {
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cyrene-feature-showcase {
+    padding-inline: 16px;
+  }
+
+  .cyrene-feature-showcase__visual {
+    border-radius: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyrene-feature-showcase__visual {
+    animation: none;
+    transition: none;
+  }
+
+  .cyrene-feature-showcase__image {
+    transition: none;
+  }
+}

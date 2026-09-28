@@ -17,6 +17,9 @@
   --cyrene-border: #e6e7e9;
   --cyrene-navbar-border: #eff0f2;
   --cyrene-accent: #ff5b8a;
+  --cyrene-hero-glow-pink: rgba(255, 91, 138, .19);
+  --cyrene-hero-glow-lilac: rgba(181, 152, 255, .2);
+  --cyrene-hero-glow-blue: rgba(151, 216, 255, .16);
   --cyrene-primary-bg: #17181b;
   --cyrene-primary-hover: #34363b;
   --cyrene-secondary-hover: #fafafa;
@@ -36,6 +39,9 @@ html[data-theme='dark'] {
   --cyrene-border: #303238;
   --cyrene-navbar-border: #292a2e;
   --cyrene-accent: #ff5b8a;
+  --cyrene-hero-glow-pink: rgba(255, 91, 138, .25);
+  --cyrene-hero-glow-lilac: rgba(181, 152, 255, .27);
+  --cyrene-hero-glow-blue: rgba(151, 216, 255, .2);
   --cyrene-primary-bg: #f0f0f1;
   --cyrene-primary-hover: #fff;
   --cyrene-secondary-hover: #1b1c20;
@@ -115,18 +121,64 @@ body {
   color: var(--cyrene-fg);
 }
 
+.navbar a[target='_blank'] > svg[aria-label='(opens in new tab)'] {
+  display: none !important;
+}
+
+.navbar__link.cyrene-nav-github {
+  display: inline-grid;
+  width: 24px;
+  height: 32px;
+  place-items: center;
+  overflow: hidden;
+  font-size: 0;
+  text-indent: -9999px;
+}
+
+.navbar__link.cyrene-nav-github::before {
+  width: 17px;
+  height: 17px;
+  background-color: currentColor;
+  content: '';
+  -webkit-mask: url('/img/github-mark.svg') center / contain no-repeat;
+  mask: url('/img/github-mark.svg') center / contain no-repeat;
+}
+
+.navbar__link.cyrene-nav-github:focus-visible {
+  outline: 2px solid var(--cyrene-accent);
+  outline-offset: 3px;
+}
+
+.cyrene-windows-icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
 .cyrene-nav-cta {
-  padding: 11px 17px !important;
-  border-radius: 7px;
-  color: var(--cyrene-page-bg) !important;
-  background: var(--cyrene-primary-bg);
-  font-size: 12px;
-  font-weight: 600;
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  padding: 0 !important;
+  place-items: center;
+  border-radius: 0;
+  color: var(--cyrene-fg) !important;
+  background: transparent;
+  font-size: 0;
+}
+
+.cyrene-nav-cta::before {
+  width: 17px;
+  height: 17px;
+  background: currentColor;
+  content: '';
+  -webkit-mask: url('/img/lucide-download.svg') center / contain no-repeat;
+  mask: url('/img/lucide-download.svg') center / contain no-repeat;
 }
 
 .cyrene-nav-cta:hover {
-  color: var(--cyrene-page-bg) !important;
-  background: var(--cyrene-primary-hover);
+  color: var(--cyrene-accent) !important;
+  background: transparent;
 }
 
 .navbar [class*='toggleButton'] {
@@ -141,18 +193,78 @@ body {
   color: var(--cyrene-fg);
 }
 
-.cyrene-hero,
+.cyrene-hero-transition,
 .cyrene-demo {
   background: var(--cyrene-page-bg);
 }
 
-.cyrene-kicker { color: var(--cyrene-accent); }
+.cyrene-hero-transition {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.cyrene-hero,
+.cyrene-providers {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+.cyrene-hero-transition::before {
+  position: absolute;
+  z-index: -1;
+  bottom: -42px;
+  left: 50%;
+  width: min(1280px, 124vw);
+  height: 420px;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 30% 58%, var(--cyrene-hero-glow-pink), transparent 62%),
+    radial-gradient(ellipse at 67% 50%, var(--cyrene-hero-glow-lilac), transparent 60%),
+    radial-gradient(ellipse at 51% 60%, var(--cyrene-hero-glow-blue), transparent 64%);
+  filter: blur(46px);
+  opacity: .95;
+  pointer-events: none;
+  content: '';
+  transform: translate3d(-52%, 2px, 0) scale(.96);
+  animation: cyrene-hero-glow-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes cyrene-hero-glow-drift {
+  from { transform: translate3d(-52%, 2px, 0) scale(.96); }
+  to { transform: translate3d(-48%, -5px, 0) scale(1.04); }
+}
+
+@media (max-width: 640px) {
+  .cyrene-hero-transition::before {
+    bottom: -36px;
+    height: 330px;
+    filter: blur(36px);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyrene-hero-transition::before { animation: none; }
+}
+
 .cyrene-title { color: var(--cyrene-fg); }
 .cyrene-accent { color: var(--cyrene-accent); }
 .cyrene-description { color: var(--cyrene-copy); }
-.cyrene-note { color: var(--cyrene-muted); }
-.cyrene-note-icon { color: var(--cyrene-copy); }
-.cyrene-note-divider { background: var(--cyrene-border); }
+
+.cyrene-hero-logo {
+  animation: cyrene-logo-float 3.2s ease-in-out infinite;
+}
+
+@keyframes cyrene-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyrene-hero-logo { animation: none; }
+}
 
 .cyrene-primary-button {
   background: var(--cyrene-primary-bg);
@@ -214,6 +326,7 @@ html[data-theme='dark'] .cyrene-secondary-button:hover { color: #ececef !importa
   }
 
   .cyrene-nav-cta {
-    padding: 10px 12px !important;
+    width: 30px;
+    height: 32px;
   }
 }

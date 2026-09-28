@@ -1,0 +1,123 @@
+.cyrene-disclaimer-page {
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: clamp(38px, 6vw, 76px) 24px 112px;
+  color: var(--cyrene-fg);
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--cyrene-hero-glow-pink), transparent 36%),
+    var(--cyrene-page-bg);
+}
+
+.cyrene-disclaimer-wrap {
+  width: min(900px, 100%);
+  margin-inline: auto;
+}
+
+.cyrene-disclaimer-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--cyrene-muted) !important;
+  font-size: 12px;
+  text-decoration: none !important;
+  transition: color .16s ease;
+}
+
+.cyrene-disclaimer-back:hover { color: var(--cyrene-accent) !important; }
+
+.cyrene-disclaimer-hero {
+  margin: 34px 0 38px;
+  text-align: center;
+}
+
+.cyrene-disclaimer-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--cyrene-accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cyrene-disclaimer-hero h1 {
+  margin: 14px 0 10px;
+  color: var(--cyrene-fg);
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 580;
+  letter-spacing: -.045em;
+  line-height: 1.2;
+}
+
+.cyrene-disclaimer-hero p {
+  margin: 0;
+  color: var(--cyrene-copy);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.cyrene-disclaimer-content {
+  padding: 8px clamp(22px, 5vw, 48px);
+  border: 1px solid var(--cyrene-border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--cyrene-page-bg), var(--cyrene-fg) 2%);
+  box-shadow: 0 24px 70px rgb(16 16 22 / 6%);
+}
+
+.cyrene-disclaimer-content section {
+  padding: 25px 0 23px;
+  border-bottom: 1px solid var(--cyrene-border);
+}
+
+.cyrene-disclaimer-content section:last-child { border-bottom: 0; }
+
+.cyrene-disclaimer-content h2 {
+  margin: 0 0 12px;
+  color: var(--cyrene-fg);
+  font-size: 16px;
+  font-weight: 620;
+  letter-spacing: -.02em;
+  line-height: 1.5;
+}
+
+.cyrene-disclaimer-content p,
+.cyrene-disclaimer-content li {
+  color: var(--cyrene-copy);
+  font-size: 13px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.cyrene-disclaimer-content p { margin: 0 0 9px; }
+.cyrene-disclaimer-content p:last-child { margin-bottom: 0; }
+.cyrene-disclaimer-content strong { color: var(--cyrene-fg); font-weight: 650; }
+
+.cyrene-disclaimer-content ul {
+  display: grid;
+  gap: 7px;
+  margin: 9px 0 12px;
+  padding-left: 21px;
+}
+
+.cyrene-disclaimer-content li::marker { color: var(--cyrene-accent); }
+
+.cyrene-disclaimer-content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--cyrene-accent) !important;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.cyrene-disclaimer-content a:hover { text-decoration: underline; }
+.cyrene-disclaimer-content a:focus-visible,
+.cyrene-disclaimer-back:focus-visible { outline: 2px solid var(--cyrene-accent); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .cyrene-disclaimer-page { padding: 28px 16px 76px; }
+  .cyrene-disclaimer-hero { margin: 28px 0 26px; }
+  .cyrene-disclaimer-content { padding-inline: 19px; border-radius: 9px; }
+  .cyrene-disclaimer-content section { padding: 21px 0 19px; }
+  .cyrene-disclaimer-content h2 { font-size: 15px; }
+  .cyrene-disclaimer-content p,
+  .cyrene-disclaimer-content li { font-size: 12px; }
+}

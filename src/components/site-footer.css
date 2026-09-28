@@ -1,0 +1,236 @@
+.cyrene-site-footer {
+  overflow: hidden;
+  color: #f3f2f5;
+  background: #0d0d10;
+}
+
+.cyrene-footer-cta {
+  position: relative;
+  display: flex;
+  min-height: 350px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 64px 24px 70px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  text-align: center;
+  isolation: isolate;
+}
+
+.cyrene-footer-cta::before {
+  position: absolute;
+  z-index: -1;
+  inset: auto 50% -210px;
+  width: min(1000px, 100vw);
+  height: 430px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 91, 138, .2), rgba(155, 111, 207, .13) 38%, transparent 72%);
+  filter: blur(38px);
+  content: '';
+  transform: translateX(50%);
+  pointer-events: none;
+}
+
+.cyrene-footer-cta-logo {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 18px;
+  object-fit: contain;
+}
+
+.cyrene-footer-eyebrow {
+  margin: 0 0 10px;
+  color: #ff85a7;
+  font-size: 12px;
+  letter-spacing: .12em;
+}
+
+.cyrene-footer-cta h2 {
+  margin: 0;
+  color: #f7f5f7;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 550;
+  letter-spacing: -.045em;
+  line-height: 1.25;
+}
+
+.cyrene-footer-download {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 9px;
+  margin-top: 26px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 7px;
+  color: #fff !important;
+  background: #ff5b8a;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: transform .18s ease, background .18s ease;
+}
+
+.cyrene-footer-download:hover {
+  color: #fff !important;
+  background: #ff7099;
+  transform: translateY(-2px);
+}
+
+.cyrene-footer-main {
+  width: min(1200px, calc(100% - 64px));
+  margin-inline: auto;
+  padding: 54px 0 22px;
+}
+
+.cyrene-footer-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.6fr) repeat(4, minmax(125px, 1fr));
+  gap: clamp(22px, 3vw, 48px);
+  padding-bottom: 48px;
+}
+
+.cyrene-footer-brand-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #f4f2f5 !important;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -.025em;
+  text-decoration: none !important;
+}
+
+.cyrene-footer-brand-name img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.cyrene-footer-brand-name i {
+  margin-inline: 3px;
+  color: #ff5b8a;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.cyrene-footer-brand p {
+  margin: 14px 0 0 48px;
+  color: #85838c;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.cyrene-footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.cyrene-footer-column h3 {
+  margin: 3px 0 7px;
+  color: #f1eff3;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cyrene-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a4a1aa !important;
+  font-size: 12px;
+  line-height: 1.4;
+  text-decoration: none !important;
+  transition: color .16s ease;
+}
+
+.cyrene-footer-link svg {
+  flex: 0 0 auto;
+  color: #77747e;
+  transition: color .16s ease;
+}
+
+.cyrene-footer-brand-github { color: #f0eff2 !important; }
+.cyrene-footer-brand-gitee { color: #c71d23 !important; }
+.cyrene-footer-brand-bilibili { color: #00a1d6 !important; }
+
+.cyrene-footer-link:hover,
+.cyrene-footer-link:hover svg {
+  color: #ff7b9f !important;
+}
+
+.cyrene-footer-link-arrow {
+  opacity: 0;
+  transform: translate(-2px, 2px);
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+.cyrene-footer-link:hover .cyrene-footer-link-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.cyrene-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  color: #6f6d76;
+  font-size: 11px;
+}
+
+@media (max-width: 960px) {
+  .cyrene-footer-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cyrene-footer-brand {
+    grid-column: 1 / -1;
+    padding-bottom: 6px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cyrene-footer-cta {
+    min-height: 305px;
+    padding: 54px 20px 60px;
+  }
+
+  .cyrene-footer-cta-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .cyrene-footer-main {
+    width: calc(100% - 40px);
+    padding-top: 38px;
+  }
+
+  .cyrene-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+    padding-bottom: 36px;
+  }
+
+  .cyrene-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .cyrene-footer-bottom {
+    flex-direction: column;
+    gap: 9px;
+    padding-top: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyrene-footer-download,
+  .cyrene-footer-link,
+  .cyrene-footer-link svg {
+    transition: none;
+  }
+}
