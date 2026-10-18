@@ -126,10 +126,12 @@ body {
 }
 
 .navbar__link.cyrene-nav-github {
-  display: inline-grid;
+  /* 用 flex 而非 grid：隐藏的链接文字在 grid 里会占第二行，把图标挤高约 4px */
+  display: inline-flex;
   width: 24px;
   height: 32px;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   font-size: 0;
   text-indent: -9999px;
@@ -156,11 +158,12 @@ body {
 }
 
 .cyrene-nav-cta {
-  display: inline-grid;
+  display: inline-flex;
   width: 32px;
   height: 32px;
   padding: 0 !important;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   border-radius: 0;
   color: var(--cyrene-fg) !important;
   background: transparent;
@@ -186,6 +189,12 @@ body {
   height: 32px;
   border-radius: 8px;
   color: var(--cyrene-copy);
+}
+
+.navbar [class*='toggleButton'] svg {
+  /* 默认 24px，比 GitHub、下载图标的 17px 明显偏大 */
+  width: 18px;
+  height: 18px;
 }
 
 .navbar [class*='toggleButton']:hover {
