@@ -13,6 +13,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "test": "node --test src/lib/latest-release.test.mjs",
     "typecheck": "tsc",
     "build:with-preview": "npm run prepare:desktop-preview && docusaurus build"
   },
