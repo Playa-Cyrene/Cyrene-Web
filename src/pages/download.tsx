@@ -1,52 +1,73 @@
 import Layout from '@theme/Layout';
+import {usePluginData} from '@docusaurus/useGlobalData';
 import {ArrowUpRight, CloudDownload, Download, PackageOpen} from 'lucide-react';
+import {compareVersions, formatDate, formatSize, type ReleaseInfo} from '../lib/latest-release';
+import {useLatestRelease} from '../lib/use-latest-release';
 import './download.css';
 
-const downloads = [
-  {
-    name: 'GitHub Releases',
-    eyebrow: '项目发布页',
-    description: '查看 Cyrene 的 GitHub Releases 页面与公开发布包。',
-    href: 'https://github.com/Playa-Cyrene/Cyrene-Agent/releases',
-    action: '前往 GitHub Releases',
-    icon: Download,
-    className: 'github',
-  },
-  {
-    name: '夸克网盘',
-    eyebrow: '网盘下载',
-    description: '通过夸克网盘获取 Cyrene v1.3.0。',
-    href: 'https://pan.quark.cn/s/338de1846636',
-    action: '打开夸克网盘',
-    icon: CloudDownload,
-    className: 'quark',
-  },
-];
+// 夸克网盘链接需手动维护，GitHub 无法得知网盘里是哪个版本；更新网盘文件后同步修改这里。
+const QUARK_URL = 'https://pan.quark.cn/s/338de1846636';
+const QUARK_VERSION = '1.3.0';
 
 export default function DownloadPage() {
+  const buildRelease = usePluginData('cyrene-latest-release') as ReleaseInfo;
+  const release = useLatestRelease(buildRelease);
+  const {version, installer, htmlUrl} = release;
+  const publishedOn = formatDate(release.publishedAt);
+  const installerSize = installer ? formatSize(installer.size) : '';
+  const quarkIsOlder = compareVersions(QUARK_VERSION, version) < 0;
+
   return (
-    <Layout title="下载 Cyrene v1.3.0" description="下载 Cyrene v1.3.0 正式版。">
+    <Layout title={`下载 Cyrene v${version}`} description={`下载 Cyrene v${version} 正式版。`}>
       <main className="cyrene-download-page">
         <section className="cyrene-download-hero" aria-labelledby="cyrene-download-title">
-          <span className="cyrene-download-version"><PackageOpen size={14} aria-hidden="true" /> 正式版 · v1.3.0</span>
+          <span className="cyrene-download-version">
+            <PackageOpen size={14} aria-hidden="true" /> 正式版 · v{version}{publishedOn && ` · ${publishedOn} 发布`}
+          </span>
           <h1 id="cyrene-download-title">下载 Cyrene</h1>
           <p>选择一个下载方式，开始让昔涟生活在你的电脑上。</p>
         </section>
 
-        <section className="cyrene-download-options" aria-label="Cyrene v1.3.0 下载方式">
-          {downloads.map(({name, eyebrow, description, href, action, icon: Icon, className}) => (
-            <article className={`cyrene-download-card is-${className}`} key={name}>
-              <div className="cyrene-download-card__topline">
-                <span className="cyrene-download-card__icon"><Icon size={20} strokeWidth={1.8} aria-hidden="true" /></span>
-                <span className="cyrene-download-card__eyebrow">{eyebrow}</span>
-              </div>
-              <h2>{name}</h2>
-              <p>{description}</p>
-              <a className="cyrene-download-card__action" href={href} target="_blank" rel="noreferrer">
-                {action} <ArrowUpRight size={15} aria-hidden="true" />
+        <section className="cyrene-download-options" aria-label={`Cyrene v${version} 下载方式`}>
+          <article className="cyrene-download-card is-github">
+            <div className="cyrene-download-card__topline">
+              <span className="cyrene-download-card__icon"><Download size={20} strokeWidth={1.8} aria-hidden="true" /></span>
+              <span className="cyrene-download-card__eyebrow">GitHub Releases</span>
+            </div>
+            <h2>Windows 安装包</h2>
+            <p>
+              {installer
+                ? <>直接下载 v{version} 安装程序<span className="cyrene-download-card__meta">{installer.name}{installerSize && ` · ${installerSize}`}</span></>
+                : `查看 Cyrene v${version} 的发布说明与安装包。`}
+            </p>
+            <div className="cyrene-download-card__actions">
+              <a className="cyrene-download-card__action" href={installer?.url ?? htmlUrl} target="_blank" rel="noreferrer">
+                {installer ? `下载 v${version}` : '前往 GitHub Releases'} <ArrowUpRight size={15} aria-hidden="true" />
               </a>
-            </article>
-          ))}
+              {installer && (
+                <a className="cyrene-download-card__secondary" href={htmlUrl} target="_blank" rel="noreferrer">
+                  发布说明与其他安装包
+                </a>
+              )}
+            </div>
+          </article>
+
+          <article className="cyrene-download-card is-quark">
+            <div className="cyrene-download-card__topline">
+              <span className="cyrene-download-card__icon"><CloudDownload size={20} strokeWidth={1.8} aria-hidden="true" /></span>
+              <span className="cyrene-download-card__eyebrow">网盘下载</span>
+            </div>
+            <h2>夸克网盘</h2>
+            <p>
+              通过夸克网盘获取 Cyrene v{QUARK_VERSION}。
+              {quarkIsOlder && <span className="cyrene-download-card__meta">网盘版本不是最新，最新版 v{version} 请从 GitHub 下载。</span>}
+            </p>
+            <div className="cyrene-download-card__actions">
+              <a className="cyrene-download-card__action" href={QUARK_URL} target="_blank" rel="noreferrer">
+                打开夸克网盘 <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+          </article>
         </section>
       </main>
     </Layout>

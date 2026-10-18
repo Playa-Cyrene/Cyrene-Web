@@ -130,6 +130,37 @@
   transform: translateY(-1px);
 }
 
+.cyrene-download-card__meta {
+  display: block;
+  margin-top: 4px;
+  color: var(--cyrene-muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.cyrene-download-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: auto;
+}
+
+.cyrene-download-card__actions .cyrene-download-card__action {
+  margin-top: 0;
+}
+
+.cyrene-download-card__secondary {
+  color: var(--cyrene-muted) !important;
+  font-size: 12px;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.cyrene-download-card__secondary:hover {
+  color: var(--cyrene-accent) !important;
+}
+
 @media (max-width: 640px) {
   .cyrene-download-page { padding: 76px 18px 90px; }
   .cyrene-download-options { grid-template-columns: 1fr; gap: 14px; }

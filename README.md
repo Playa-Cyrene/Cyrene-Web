@@ -25,6 +25,16 @@ Cloudflare Pages 构建设置：
 - 构建命令：`npm run build`
 - 输出目录：`build`
 
+### 下载页版本
+
+`/download` 显示 Cyrene-Agent 的最新正式版，无需手动改版本号：
+
+- **构建时**：`docusaurus.config.ts` 里的 `cyrene-latest-release` 插件读取 GitHub `releases/latest`，把版本、发布日期和安装包链接写进页面。读取失败（离线、超时、额度用完）时使用 `src/data/latest-release.fallback.json` 快照，构建不会失败。可在 Cloudflare Pages 设置 `GITHUB_TOKEN` 环境变量，避开未登录 API 每小时 60 次的限制。
+- **访问时**：浏览器再向 GitHub 查一次（5 秒超时，会话内缓存 10 分钟），有更新的版本就替换；查不到时保留构建时的版本。
+- **夸克网盘**：链接与版本号在 `src/pages/download.tsx` 顶部手动维护（`QUARK_URL`、`QUARK_VERSION`），网盘版本落后时页面会提示从 GitHub 下载最新版。
+
+`npm test` 运行版本解析相关的单元测试。
+
 需要刷新网站中的桌面界面预览时，在本地同时准备好 `Cyrene-Agent` 项目后运行：
 
 ```bash
