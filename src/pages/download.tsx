@@ -6,8 +6,8 @@ import {useLatestRelease} from '../lib/use-latest-release';
 import './download.css';
 
 // 夸克网盘链接需手动维护，GitHub 无法得知网盘里是哪个版本；更新网盘文件后同步修改这里。
-const QUARK_URL = 'https://pan.quark.cn/s/338de1846636';
-const QUARK_VERSION = '1.3.0';
+const QUARK_URL = 'https://pan.quark.cn/s/e87dba6a03d3';
+const QUARK_VERSION = '1.3.4';
 
 export default function DownloadPage() {
   const buildRelease = usePluginData('cyrene-latest-release') as ReleaseInfo;
