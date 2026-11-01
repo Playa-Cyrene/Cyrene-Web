@@ -19,7 +19,7 @@ export default function Announcement() {
     <section className="cyrene-announcement" id="updates" aria-labelledby="cyrene-announcement-title">
       <div className="cyrene-announcement__inner">
         <div className="cyrene-announcement__meta">
-          <span className="cyrene-announcement__badge"><Sparkles size={13} aria-hidden="true" /> 最新公告</span>
+          <span className="cyrene-announcement__badge"><Sparkles size={13} aria-hidden="true" /> 正式版公告</span>
           <time dateTime="2026-09-28">2026 年 9 月 28 日</time>
         </div>
 

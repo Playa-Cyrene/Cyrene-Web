@@ -112,6 +112,14 @@
   background: color-mix(in srgb, var(--cyrene-page-bg), var(--cyrene-fg) 1.5%);
 }
 
+.cyrene-release-notes__chapter--wide {
+  grid-column: 1 / -1;
+}
+
+.cyrene-release-notes__closing a {
+  color: var(--cyrene-accent);
+}
+
 .cyrene-release-notes__chapter-top {
   display: flex;
   align-items: center;
